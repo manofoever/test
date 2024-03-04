@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request
 import boto3
 
 
@@ -24,11 +24,20 @@ def upload_to_S3(bucket_name, file_path, object_name):
         return False
 
     return True
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 @app.route('/ask_me', methods = ['POST'])
 def get_json_data():
-    data = {"message" : "Hello, what do you want?"}
-    return jsonify(data)
 
+    if request.method == 'POST':
+        name = request.form['name']
+    with open(f'test_{name}.txt','w') as f:
+        f.write(str(name))
+
+    #upload_to_S3('mynewbucket-for-myapp', 'test.txt', f'input/test_{name}.txt')
+    return 'f Thank you '
 @app.route('/ask_me_anything')
 def get_data():
     global count
