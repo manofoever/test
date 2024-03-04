@@ -29,7 +29,7 @@ def get_json_data():
 def get_data():
     data = {"message" : "Hello, what do you want?"}
     with open('test.txt','w') as f:
-        f.write(data)
+        f.write(str(data))
 
     upload_to_S3('mynewbucket-for-myapp', 'test.txt', 'test.txt')
     return jsonify(data)
