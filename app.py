@@ -7,8 +7,8 @@ app = Flask(__name__)
 count = 0
 
 def upload_to_S3(bucket_name, file_path, object_name):
-    aws_access_key_id = 'AKIA2QF4WYZBICZ5CN66'
-    aws_secret_access_key = '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'
+    aws_access_key_id = ''
+    aws_secret_access_key = ''
     aws_region = 'us-east-1'
     s3 = boto3.client('s3',
                       aws_access_key_id=aws_access_key_id,
