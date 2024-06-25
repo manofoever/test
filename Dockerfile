@@ -5,7 +5,7 @@ FROM python:3.8-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Set the working directory in the container
-WORKDIR /app
+
 
 # Copy the Flask application code into the container
 COPY . /app
